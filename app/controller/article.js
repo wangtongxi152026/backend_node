@@ -319,10 +319,9 @@ class ArticleController extends BaseController {
       this.responseClient(200, 0, "操作成功 ！", article);
     }
   }
-  // 文章详情
+  // 评论详情
   async getArticleComment() {
     const { id } = this.ctx.request.body;
-    console.log(id);
 
     const type = Number(this.ctx.request.body.type) || 1; // 文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍
     const filter = Number(this.ctx.request.body.filter) || 1; // 文章的评论过滤 => 1: 过滤，2: 不过滤
