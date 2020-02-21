@@ -38,22 +38,12 @@ class CommentController extends BaseController {
       );
 
       this.responseClient(200, 0, "操作成功 ！");
-      return
+      return;
     } catch (error) {
       this.responseClient(error);
     }
   }
   async addThirdComment() {
-    // if (!req.session.userInfo) {
-    //   responseClient(
-    //     res,
-    //     200,
-    //     1,
-    //     "您还没登录,或者登录信息已过期，请重新登录！"
-    //   )
-    //   return;
-    // }
-
     const {
       article_id,
       comment_id,
@@ -79,11 +69,12 @@ class CommentController extends BaseController {
     const item = {
       user: userInfo,
       content,
-      to_user: JSON.parse(to_user)
+      to_user: to_user
+      // to_user: JSON.parse(to_user)
     };
 
     try {
-      this.ctx.model.Comment.findByIdAndUpdate(comment_id, {
+      await this.ctx.model.Comment.findByIdAndUpdate(comment_id, {
         is_handle: 2,
         $push: { other_comments: item }
       });

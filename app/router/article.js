@@ -14,5 +14,6 @@ module.exports = ({ router, controller,middleware }) => {
   router.get("/getArticleList", controller.article.getArticleList);
   router.get("/getArticleListAdmin", controller.article.getArticleListAdmin);
   router.post("/getArticleDetail", controller.article.getArticleDetail);
+  router.post("/getArticleComment", controller.article.getArticleComment);
   // router.post('/likeArticle', controller.article.likeArticle)
 };
